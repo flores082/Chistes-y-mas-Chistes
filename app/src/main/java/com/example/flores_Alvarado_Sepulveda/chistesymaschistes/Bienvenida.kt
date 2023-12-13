@@ -20,10 +20,7 @@ class Bienvenida : AppCompatActivity() {
 
     fun VerBienvenida() {
         object : CountDownTimer(2000, 1000) {
-            override fun onTick(p0: Long) {
-
-            }
-
+            override fun onTick(p0: Long) {}
             override fun onFinish() {
                 mediaPlayer.reset()
                 val intent = Intent(this@Bienvenida, MainActivity::class.java)
