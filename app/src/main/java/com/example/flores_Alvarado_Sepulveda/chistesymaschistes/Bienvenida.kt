@@ -9,7 +9,7 @@ import android.os.CountDownTimer
 class Bienvenida : AppCompatActivity() {
     private lateinit var mediaPlayer:MediaPlayer
     private lateinit var HOLA: String
-    private lateinit var HOLA2: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         mediaPlayer =MediaPlayer.create(this, R.raw.risa)
