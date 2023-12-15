@@ -1,5 +1,6 @@
 package com.example.flores_Alvarado_Sepulveda.chistesymaschistes.Listas
 
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -8,9 +9,12 @@ import android.widget.ImageButton
 import com.example.flores_Alvarado_Sepulveda.chistesymaschistes.R
 
 class Llamar_chistes : AppCompatActivity() {
+    private lateinit var mediaPlayer: MediaPlayer
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_llamar_chistes)
+
+        mediaPlayer =MediaPlayer.create(this, R.raw.precionar_boton)
 
         val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.myToolbar)
         setSupportActionBar(toolbar)
@@ -18,6 +22,7 @@ class Llamar_chistes : AppCompatActivity() {
         // Configurar el botón de retorno (flecha)
         val btnBack: ImageButton = findViewById(R.id.btnBack)
         btnBack.setOnClickListener {
+            mediaPlayer.start()
             // Acciones al presionar la flecha de retorno
             onBackPressed()
         }

@@ -49,5 +49,40 @@
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
 
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="152dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="244dp"
+        android:scrollbarSize="20dp"
+        android:text="@string/presentación"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="144dp"
+        android:layout_height="71dp"
+        android:text="@string/chiste"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.523" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="134dp"
+        android:layout_height="70dp"
+        android:text="@string/guardado"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.655" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
