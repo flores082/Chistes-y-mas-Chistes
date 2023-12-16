@@ -10,7 +10,7 @@ import com.example.flores_Alvarado_Sepulveda.chistesymaschistes.R
 data class mostrado(
     val c :String
 )
-class Lista_Adapter(private val LC: MutableList<String>):
+class Lista_Adapter(private val LC: MutableList<mostrado>):
         RecyclerView.Adapter<Lista_Adapter.ProductoViewHolder>(){
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductoViewHolder {
@@ -30,8 +30,8 @@ class Lista_Adapter(private val LC: MutableList<String>):
 
             private val textView: TextView = itemView.findViewById(R.id.textView)
 
-            fun bin(producto: String, numeroUnico: Int){
-                val textoMostrado = "${producto} - $numeroUnico"
+            fun bin(producto: mostrado, numeroUnico: Int){
+                val textoMostrado = "${producto.c} - $numeroUnico"
                 textView.text = textoMostrado
             }
         }

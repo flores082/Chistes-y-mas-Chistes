@@ -11,16 +11,19 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.flores_Alvarado_Sepulveda.chistesymaschistes.Adapter.Lista_Adapter
-import com.example.flores_Alvarado_Sepulveda.chistesymaschistes.Entity.Chiste
+import com.example.flores_Alvarado_Sepulveda.chistesymaschistes.Adapter.mostrado
 import com.example.flores_Alvarado_Sepulveda.chistesymaschistes.apiClass.ApiCallback
 import com.example.flores_Alvarado_Sepulveda.chistesymaschistes.apiClass.ApiKeyManager
 import com.example.flores_Alvarado_Sepulveda.chistesymaschistes.apiClass.ApiRequestTask
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.json.JSONException
 import org.json.JSONObject
 
 class JokeGeneratorActivity : AppCompatActivity(), ApiCallback {
 
-    private var nombresList = mutableListOf<String>()
+    private var nombresList = mutableListOf<mostrado>()
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: Lista_Adapter
     private lateinit var mediaPlayer:MediaPlayer
@@ -44,6 +47,7 @@ class JokeGeneratorActivity : AppCompatActivity(), ApiCallback {
         val refreshButton: Button = findViewById(R.id.button)
         refreshButton.setOnClickListener {
             // Trigger API request when the button is clicked
+            lista_agregada("nombre")
             requestRandomJoke()
         }
 
@@ -94,7 +98,7 @@ class JokeGeneratorActivity : AppCompatActivity(), ApiCallback {
                 // Update the UI with the new joke
                 val jokeTextView: TextView = findViewById(androidx.preference.R.id.recycler_view)
                 jokeTextView.text = joke
-                lista_agregada("nombre")
+                lista_agregada(joke)
             } catch (e: JSONException) {
                 e.printStackTrace()
                 // Handle the case where JSON parsing failed
@@ -105,7 +109,12 @@ class JokeGeneratorActivity : AppCompatActivity(), ApiCallback {
     }
 
     fun lista_agregada(chiste:String){
-        nombresList.add(chiste)
-        adapter.notifyDataSetChanged()
+        val nombreEntity = mostrado(c = chiste +" - ${nombresList.size + 1}")
+        nombresList.add(nombreEntity)
+        adapter.notifyItemInserted(nombresList.size - 1)
+
+        GlobalScope.launch(Dispatchers.IO) {
+            nombreEntity
+        }
     }
 }
