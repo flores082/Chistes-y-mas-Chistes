@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Chistes y mas Chistes</string>
-    <string name="presentación">Presentación</string>
-    <string name="guardado">Chistes Guadados</string>
+    <string name="app_name">Chistes y Más Chistes</string>
+    <string name="presentación">Acerca de</string>
+    <string name="guardado">Chistes Guardados</string>
     <string name="chiste">Generar Chistes</string>
     <string name="leer">¿Quieres leer un chiste?</string>
     <string name="si">SI</string>
-    <string name="integrantes">Integrantes:
+    <string name="integrantes">Creadores:
         Michel Flores
         Matias Alvarado
         Fabian Sepulveda</string>
-    <string name="Temas">En la aplicación podra pedir chistes al azar desde un API y guardarlos de manera persistente</string>
+    <string name="Temas">En la aplicación podras pedir chistes al azar desde un API y guardarlos de manera persistente.</string>
 </resources>

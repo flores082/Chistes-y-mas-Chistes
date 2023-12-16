@@ -4,8 +4,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="sky_blue">#2BB4F3</color>
     <color name="red">#FF1B1B</color>
-    <color name="yellow">#FFF430</color>
-    <color name="Orange_tree">#FDC723</color>
-    <color name="green">#4CEF1E</color>
+    <color name="yellow">#FFEB3B</color>
+    <color name="beige">#EFDCA4</color>
+    <color name="orange">#FF9800</color>
+    <color name="red_orange">#FF5722</color>
 
 </resources>

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Jokes and more jokes</string>
-    <string name="presentación">Presentation</string>
-    <string name="guardado">Sad Jokes</string>
+    <string name="app_name">Jokes and More Jokes</string>
+    <string name="presentación">About</string>
+    <string name="guardado">Saved Jokes</string>
     <string name="chiste">Generate Jokes</string>
-    <string name="leer">¿Do you want to read a joke?</string>
+    <string name="leer">Do you want to read a joke?</string>
     <string name="si">YES</string>
-    <string name="integrantes">Integrantes:
+    <string name="integrantes">Creators:
         Michel Flores
         Matias Alvarado
         Fabian Sepulveda</string>
-    <string name="Temas">In the application you can request random jokes from an API and save them persistently</string>
+    <string name="Temas">In the application you can request random jokes from an API and save them persistently.</string>
 </resources>

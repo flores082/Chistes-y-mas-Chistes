@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Guardados"
-    android:background="@color/yellow">
+    android:background="@color/beige"
+    tools:context=".Guardados">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,7 +29,7 @@
         android:id="@+id/myToolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/sky_blue"
+        android:background="@color/orange"
         android:elevation="4dp"
         android:gravity="center"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
@@ -40,8 +40,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <!-- Botón de retorno (flecha) -->
             <ImageButton
