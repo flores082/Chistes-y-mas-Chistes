@@ -26,29 +26,33 @@ class Guardados : AppCompatActivity() {
 
         mediaPlayer = MediaPlayer.create(this, R.raw.precionar_boton)
 
-        listaChistes = findViewById(R.id.ListView)
-
-        chists = mutableListOf(
-            Chiste(1,"jajajaja")
-        )
-
-        adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, chists.map { it.chisteText })
-
-        listaChistes.adapter = adapter
 
         baseDatos = Room.databaseBuilder(
             applicationContext,
             DataBase::class.java, "database"
-        ).allowMainThreadQueries().build()
+        ).allowMainThreadQueries().fallbackToDestructiveMigration().build()
 
         val ProdDao = baseDatos.productoDao()
         //ProdDao.insertAll(nProduct)
 
         val users: List<Chiste> = ProdDao.getAll()
-        for (chiste: Chiste in chists){
+
+        listaChistes = findViewById(R.id.ListView)
+
+        chists = users.toMutableList()
+
+        adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, chists.map { it.chisteText })
+
+        listaChistes.adapter = adapter
+
+
+        //chists.clear()
+        for (chiste: Chiste in users){
             Log.d("PROD", chiste.chisteText!!)
+            chists.add(Chiste(chiste.id,chiste.chisteText))
         }
         adapter.notifyDataSetChanged()
+        //adapter.notifyDataSetChanged()
 
 
         // Configurar el botón de retorno (flecha)

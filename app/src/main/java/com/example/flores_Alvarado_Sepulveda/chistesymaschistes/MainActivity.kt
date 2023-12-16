@@ -52,7 +52,6 @@ class MainActivity : AppCompatActivity() {
             mediaPlayer.start()
             val intent2 =Intent(this, Llamar_chistes::class.java)
             startActivity(intent2)
-
             //adapter.notifyDataSetChanged()
         }
         guardados.setOnClickListener{

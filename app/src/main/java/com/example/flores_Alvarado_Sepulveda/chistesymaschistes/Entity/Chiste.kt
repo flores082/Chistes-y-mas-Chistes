@@ -7,8 +7,7 @@ import java.io.Serializable
 
 @Entity
 data class Chiste (
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id") val id : Long,
+    @PrimaryKey val id: Long,
     @ColumnInfo(name = "chisteText") val chisteText: String?
  ): Serializable {
     fun elChiste(): String {
