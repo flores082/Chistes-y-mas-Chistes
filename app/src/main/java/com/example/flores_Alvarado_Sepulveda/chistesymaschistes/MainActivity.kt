@@ -15,8 +15,6 @@ import androidx.room.Room
 import com.example.flores_Alvarado_Sepulveda.chistesymaschistes.About.Presentacion
 import com.example.flores_Alvarado_Sepulveda.chistesymaschistes.DataBase.DataBase
 import com.example.flores_Alvarado_Sepulveda.chistesymaschistes.Entity.Chiste
-import com.example.flores_Alvarado_Sepulveda.chistesymaschistes.Listas.Lista_chistes
-import com.example.flores_Alvarado_Sepulveda.chistesymaschistes.Listas.Llamar_chistes
 
 class MainActivity : AppCompatActivity() {
     private lateinit var mediaPlayer: MediaPlayer
@@ -50,7 +48,7 @@ class MainActivity : AppCompatActivity() {
         }
         generados.setOnClickListener{
             mediaPlayer.start()
-            val intent2 =Intent(this, Llamar_chistes::class.java)
+            val intent2 =Intent(this, JokeGeneratorActivity::class.java)
             startActivity(intent2)
             //adapter.notifyDataSetChanged()
         }
@@ -66,16 +64,5 @@ class MainActivity : AppCompatActivity() {
         inflater.inflate(R.menu.menu_inicio, menu)
         return true
     }
-    /*PARA AÑADIR UN CHISTE
-            var baseDatos = Room.databaseBuilder(
-                applicationContext,
-                DataBase::class.java, "database"
-            ).allowMainThreadQueries().build()
-            val CHISTE = ""
-            val ProdDao = baseDatos.productoDao()
-            val produ = Chiste(ProdDao.getAll().size.toLong()+1,Chiste)
-            ProdDao.insertAll(produ)*/
-
-
 
 }

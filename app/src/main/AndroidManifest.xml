@@ -19,10 +19,7 @@
             android:name=".About.Presentacion"
             android:exported="false" />
         <activity
-            android:name=".Listas.Lista_chistes"
-            android:exported="false" />
-        <activity
-            android:name=".Listas.Llamar_chistes"
+            android:name=".JokeGeneratorActivity"
             android:exported="false" />
         <activity
             android:name=".Bienvenida"

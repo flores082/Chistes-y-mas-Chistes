@@ -5,6 +5,8 @@ import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
@@ -33,6 +35,9 @@ class JokeGeneratorActivity : AppCompatActivity(), ApiCallback {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_llamar_chistes)
 
+        val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.myToolbar)
+        setSupportActionBar(toolbar)
+
         mediaPlayer = MediaPlayer.create(this, R.raw.precionar_boton)
 
         recyclerView = findViewById(R.id.lista_creada)
@@ -41,13 +46,13 @@ class JokeGeneratorActivity : AppCompatActivity(), ApiCallback {
         recyclerView.adapter = adapter
 
         // Initial API request
-        requestRandomJoke()
+        //requestRandomJoke()
 
         // Set up the button click listener
         val refreshButton: Button = findViewById(R.id.button)
         refreshButton.setOnClickListener {
+            mediaPlayer.start()
             // Trigger API request when the button is clicked
-            lista_agregada("nombre")
             requestRandomJoke()
         }
 
@@ -96,8 +101,8 @@ class JokeGeneratorActivity : AppCompatActivity(), ApiCallback {
                 val joke = jsonResponse.getString("joke")
 
                 // Update the UI with the new joke
-                val jokeTextView: TextView = findViewById(androidx.preference.R.id.recycler_view)
-                jokeTextView.text = joke
+                //val jokeTextView: TextView = findViewById(R.id.lista_creada)
+                //jokeTextView.text = joke
                 lista_agregada(joke)
             } catch (e: JSONException) {
                 e.printStackTrace()
@@ -116,5 +121,11 @@ class JokeGeneratorActivity : AppCompatActivity(), ApiCallback {
         GlobalScope.launch(Dispatchers.IO) {
             nombreEntity
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.menu_inicio, menu)
+        return true
     }
 }

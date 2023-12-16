@@ -4,46 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Listas.Llamar_chistes"
-    android:background="@color/yellow">
+    android:background="@color/yellow"
+    tools:context=".JokeGeneratorActivity">
 
     <Button
         android:id="@+id/button"
         android:layout_width="382dp"
         android:layout_height="58dp"
-        android:layout_marginTop="148dp"
         android:text="@string/si"
         android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.241"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.075" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="397dp"
         android:layout_height="77dp"
+        android:layout_marginTop="72dp"
         android:gravity="center"
         android:scrollbarSize="22dp"
         android:text="@string/leer"
         android:textSize="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.763" />
+        app:layout_constraintTop_toTopOf="@+id/myToolbar"
+        app:layout_constraintVertical_bias="0.0" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lista_creada"
         android:layout_width="411dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="296dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.23" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/myToolbar"
@@ -60,8 +61,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <!-- Botón de retorno (flecha) -->
             <ImageButton
