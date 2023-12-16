@@ -63,7 +63,7 @@ class JokeGeneratorActivity : AppCompatActivity(), ApiCallback {
                 val joke = jsonResponse.getString("joke")
 
                 // Update the UI with the new joke
-                val jokeTextView: TextView = findViewById(R.id.jokeTextView)
+                val jokeTextView: TextView = findViewById(androidx.preference.R.id.recycler_view)
                 jokeTextView.text = joke
             } catch (e: JSONException) {
                 e.printStackTrace()
