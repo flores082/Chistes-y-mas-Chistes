@@ -9,7 +9,6 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.widget.Button
 import android.widget.ImageButton
-import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.flores_Alvarado_Sepulveda.chistesymaschistes.Adapter.Lista_Adapter
@@ -53,8 +52,8 @@ class JokeGeneratorActivity : AppCompatActivity(), ApiCallback {
         refreshButton.setOnClickListener {
             mediaPlayer.start()
             // Trigger API request when the button is clicked
-            //lista_agregada("nombre")
-            requestRandomJoke()
+            lista_agregada("nombre")
+            //requestRandomJoke()
         }
 
 
@@ -108,8 +107,6 @@ class JokeGeneratorActivity : AppCompatActivity(), ApiCallback {
                 Log.d("ApiRequestTask", "ID: $id, Joke: $joke")
 
                 // Update the UI or perform any other actions with the id and joke
-                // val jokeTextView: TextView = findViewById(R.id.lista_creada)
-                // jokeTextView.text = joke
                 lista_agregada(joke)
             } catch (e: JSONException) {
                 e.printStackTrace()
