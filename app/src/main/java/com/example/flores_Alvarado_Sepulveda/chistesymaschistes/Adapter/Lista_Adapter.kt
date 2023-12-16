@@ -5,13 +5,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.flores_Alvarado_Sepulveda.chistesymaschistes.Entity.Chiste
 import com.example.flores_Alvarado_Sepulveda.chistesymaschistes.R
 
-class Lista_Adapter(private val LC: MutableList<Chiste>):
+data class mostrado(
+    val c :String
+)
+class Lista_Adapter(private val LC: MutableList<String>):
         RecyclerView.Adapter<Lista_Adapter.ProductoViewHolder>(){
-
-        var selectedPosition: Int = RecyclerView.NO_POSITION
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductoViewHolder {
             val View = LayoutInflater.from(parent.context).inflate(R.layout.activity_chiste_guardado, parent, false)
@@ -30,8 +30,8 @@ class Lista_Adapter(private val LC: MutableList<Chiste>):
 
             private val textView: TextView = itemView.findViewById(R.id.textView)
 
-            fun bin(producto: Chiste, numeroUnico: Int){
-                val textoMostrado = "${producto.chisteText} - $numeroUnico"
+            fun bin(producto: String, numeroUnico: Int){
+                val textoMostrado = "${producto} - $numeroUnico"
                 textView.text = textoMostrado
             }
         }
