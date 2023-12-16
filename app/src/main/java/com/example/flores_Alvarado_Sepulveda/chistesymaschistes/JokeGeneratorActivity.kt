@@ -53,8 +53,8 @@ class JokeGeneratorActivity : AppCompatActivity(), ApiCallback {
         refreshButton.setOnClickListener {
             mediaPlayer.start()
             // Trigger API request when the button is clicked
-            lista_agregada("nombre")
-            //requestRandomJoke()
+            //lista_agregada("nombre")
+            requestRandomJoke()
         }
 
 
@@ -74,7 +74,7 @@ class JokeGeneratorActivity : AppCompatActivity(), ApiCallback {
         // Iterate through the keys and try each one until success or no more keys
         for (apiKey in apiKeys) {
             // Construct the URL with the API key
-            val apiUrl = "https://api.humorapi.com/jokes/random?api-key=$apiKey"
+            val apiUrl = "https://api.humorapi.com/jokes/random?api-key=$apiKey&exclude-tags=nsfw,dark"
 
             // Execute the API request task
             val apiRequestTask = ApiRequestTask(this)
@@ -90,20 +90,26 @@ class JokeGeneratorActivity : AppCompatActivity(), ApiCallback {
             // Break the loop if the request was successful
             break
         }
+        lista_agregada("nombre")
     }
 
     override fun onApiResult(result: String) {
         // Handle the API response in the UI thread
         if (result.isNotBlank()) {
-            Log.d("ApiRequestTask; Raw API response: %s", result)  // Add this line for logging
-            try {
-                // Assuming the response is in JSON format, parse it and extract the joke
-                val jsonResponse = JSONObject(result)
-                val joke = jsonResponse.getString("joke")
+            Log.d("ApiRequestTask", "Raw API response: $result")  // Log the raw response
 
-                // Update the UI with the new joke
-                //val jokeTextView: TextView = findViewById(R.id.lista_creada)
-                //jokeTextView.text = joke
+            try {
+                // Assuming the response is in JSON format, parse it and extract the joke and id
+                val jsonResponse = JSONObject(result)
+                val id = jsonResponse.optInt("id", -1) // Replace -1 with a default value if "id" is not present
+                val joke = jsonResponse.optString("joke", "")
+
+                // Log the id and joke text
+                Log.d("ApiRequestTask", "ID: $id, Joke: $joke")
+
+                // Update the UI or perform any other actions with the id and joke
+                // val jokeTextView: TextView = findViewById(R.id.lista_creada)
+                // jokeTextView.text = joke
                 lista_agregada(joke)
             } catch (e: JSONException) {
                 e.printStackTrace()
