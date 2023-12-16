@@ -16,7 +16,7 @@ class Guardados_Adapter(private val chistesList: MutableList<Chiste>, private va
     var baseDatos = Room.databaseBuilder(context, DataBase::class.java, "database").allowMainThreadQueries().build()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductoViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.activity_chiste_mostrado, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.activity_chiste_guardado, parent, false)
         return ProductoViewHolder(view)
     }
 
@@ -30,8 +30,8 @@ class Guardados_Adapter(private val chistesList: MutableList<Chiste>, private va
     }
 
     inner class ProductoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val textView: TextView = itemView.findViewById(R.id.textView4)
-        val guardar = itemView.findViewById<AppCompatImageButton>(R.id.imageButton)
+        private val textView: TextView = itemView.findViewById(R.id.textView3)
+        val guardar = itemView.findViewById<AppCompatImageButton>(R.id.imageButton3)
 
         fun bin(chiste: Chiste, numeroUnico: Int) {
             val textoMostrado = "${chiste.chisteText} - $numeroUnico"
