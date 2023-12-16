@@ -11,8 +11,6 @@ data class Chiste (
     @ColumnInfo(name = "id") val id : Long,
     @ColumnInfo(name = "chisteText") val chisteText: String?
  ): Serializable {
-
-
     fun elChiste(): String {
         return chisteText ?: "" // Devuelve el texto del chiste o una cadena vacía si es nulo
     }
