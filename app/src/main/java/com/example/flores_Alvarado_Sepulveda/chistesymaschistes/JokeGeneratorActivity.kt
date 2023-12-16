@@ -1,21 +1,46 @@
 package com.example.flores_Alvarado_Sepulveda.chistesymaschistes
 
+import android.annotation.SuppressLint
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Room
+import com.example.flores_Alvarado_Sepulveda.chistesymaschistes.Adapter.Lista_Adapter
+import com.example.flores_Alvarado_Sepulveda.chistesymaschistes.DataBase.DataBase
+import com.example.flores_Alvarado_Sepulveda.chistesymaschistes.Entity.Chiste
 import com.example.flores_Alvarado_Sepulveda.chistesymaschistes.apiClass.ApiCallback
 import com.example.flores_Alvarado_Sepulveda.chistesymaschistes.apiClass.ApiKeyManager
 import com.example.flores_Alvarado_Sepulveda.chistesymaschistes.apiClass.ApiRequestTask
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.json.JSONException
 import org.json.JSONObject
 
 class JokeGeneratorActivity : AppCompatActivity(), ApiCallback {
 
+    private var nombresList = mutableListOf<Chiste>()
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: Lista_Adapter
+    private lateinit var mediaPlayer:MediaPlayer
+
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_llamar_chistes)
+
+        mediaPlayer = MediaPlayer.create(this, R.raw.precionar_boton)
+
+        recyclerView = findViewById(R.id.lista_creada)
+        adapter = Lista_Adapter(nombresList)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = adapter
 
         // Initial API request
         requestRandomJoke()
@@ -25,6 +50,15 @@ class JokeGeneratorActivity : AppCompatActivity(), ApiCallback {
         refreshButton.setOnClickListener {
             // Trigger API request when the button is clicked
             requestRandomJoke()
+        }
+
+
+        // Configurar el botón de retorno (flecha)
+        val btnBack: ImageButton = findViewById(R.id.btnBack)
+        btnBack.setOnClickListener {
+            mediaPlayer.start()
+            // Acciones al presionar la flecha de retorno
+            onBackPressed()
         }
     }
 
@@ -65,6 +99,7 @@ class JokeGeneratorActivity : AppCompatActivity(), ApiCallback {
                 // Update the UI with the new joke
                 val jokeTextView: TextView = findViewById(androidx.preference.R.id.recycler_view)
                 jokeTextView.text = joke
+                lista_agregada(joke)
             } catch (e: JSONException) {
                 e.printStackTrace()
                 // Handle the case where JSON parsing failed
@@ -72,5 +107,16 @@ class JokeGeneratorActivity : AppCompatActivity(), ApiCallback {
         } else {
             // Handle the case where the API request failed
         }
+    }
+
+    fun lista_agregada(Chiste:String){
+        var baseDatos = Room.databaseBuilder(
+            applicationContext,
+            DataBase::class.java, "database"
+        ).allowMainThreadQueries().build()
+        val CHISTE = ""+Chiste
+        val ProdDao = baseDatos.productoDao()
+        val produ = Chiste(ProdDao.getAll().size.toLong()+1,Chiste)
+        ProdDao.insertAll(produ)
     }
 }
