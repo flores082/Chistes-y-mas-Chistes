@@ -53,7 +53,8 @@ class JokeGeneratorActivity : AppCompatActivity(), ApiCallback {
         refreshButton.setOnClickListener {
             mediaPlayer.start()
             // Trigger API request when the button is clicked
-            requestRandomJoke()
+            lista_agregada("nombre")
+            //requestRandomJoke()
         }
 
 
@@ -114,7 +115,7 @@ class JokeGeneratorActivity : AppCompatActivity(), ApiCallback {
     }
 
     fun lista_agregada(chiste:String){
-        val nombreEntity = mostrado(c = chiste +" - ${nombresList.size + 1}")
+        val nombreEntity = mostrado(c = chiste )
         nombresList.add(nombreEntity)
         adapter.notifyItemInserted(nombresList.size - 1)
 

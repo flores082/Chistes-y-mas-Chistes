@@ -41,7 +41,7 @@ class Lista_Adapter(private val LC: MutableList<mostrado>,context: Context):
             val guardar = itemView.findViewById<AppCompatImageButton>(R.id.imageButton)
 
             fun bin(producto: mostrado, numeroUnico: Int){
-                val textoMostrado = "${producto.c} - $numeroUnico"
+                val textoMostrado = "${producto.c} "
                 textView.text = textoMostrado
 
                 guardar.setOnClickListener{
