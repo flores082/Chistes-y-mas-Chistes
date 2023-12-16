@@ -41,7 +41,7 @@ class JokeGeneratorActivity : AppCompatActivity(), ApiCallback {
         mediaPlayer = MediaPlayer.create(this, R.raw.precionar_boton)
 
         recyclerView = findViewById(R.id.lista_creada)
-        adapter = Lista_Adapter(nombresList)
+        adapter = Lista_Adapter(nombresList,applicationContext)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
