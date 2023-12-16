@@ -8,13 +8,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.flores_Alvarado_Sepulveda.chistesymaschistes.R
 
 data class mostrado(
+    val id: Long = 0,
     val c :String
 )
 class Lista_Adapter(private val LC: MutableList<mostrado>):
         RecyclerView.Adapter<Lista_Adapter.ProductoViewHolder>(){
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductoViewHolder {
-            val View = LayoutInflater.from(parent.context).inflate(R.layout.activity_chiste_guardado, parent, false)
+            val View = LayoutInflater.from(parent.context).inflate(R.layout.activity_chiste_mostrado, parent, false)
             return ProductoViewHolder(View)
 
         }
