@@ -13,6 +13,9 @@
         android:theme="@style/Theme.ChistesYMasChistes"
         tools:targetApi="31">
         <activity
+            android:name=".Guardados"
+            android:exported="false" />
+        <activity
             android:name=".About.Presentacion"
             android:exported="false" />
         <activity

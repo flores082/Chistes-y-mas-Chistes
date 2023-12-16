@@ -5,12 +5,16 @@ import android.content.Intent
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Toolbar
+import androidx.room.Room
 import com.example.flores_Alvarado_Sepulveda.chistesymaschistes.About.Presentacion
+import com.example.flores_Alvarado_Sepulveda.chistesymaschistes.DataBase.DataBase
+import com.example.flores_Alvarado_Sepulveda.chistesymaschistes.Entity.Chiste
 import com.example.flores_Alvarado_Sepulveda.chistesymaschistes.Listas.Lista_chistes
 import com.example.flores_Alvarado_Sepulveda.chistesymaschistes.Listas.Llamar_chistes
 
@@ -48,10 +52,12 @@ class MainActivity : AppCompatActivity() {
             mediaPlayer.start()
             val intent2 =Intent(this, Llamar_chistes::class.java)
             startActivity(intent2)
+
+            //adapter.notifyDataSetChanged()
         }
         guardados.setOnClickListener{
             mediaPlayer.start()
-            val intent3 =Intent(this, Lista_chistes::class.java)
+            val intent3 =Intent(this, Guardados::class.java)
             startActivity(intent3)
         }
     }
@@ -61,4 +67,16 @@ class MainActivity : AppCompatActivity() {
         inflater.inflate(R.menu.menu_inicio, menu)
         return true
     }
+    /*PARA AÑADIR UN CHISTE
+            var baseDatos = Room.databaseBuilder(
+                applicationContext,
+                DataBase::class.java, "database"
+            ).allowMainThreadQueries().build()
+            val CHISTE = ""
+            val ProdDao = baseDatos.productoDao()
+            val produ = Chiste(ProdDao.getAll().size.toLong()+1,Chiste)
+            ProdDao.insertAll(produ)*/
+
+
+
 }
