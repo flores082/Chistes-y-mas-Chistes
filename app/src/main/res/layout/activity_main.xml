@@ -36,14 +36,6 @@
                 android:src="@drawable/baseline_exit_to_app_24" />
 
             <!-- Título centrado -->
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="110dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="centerInside"
-                android:src="@tools:sample/avatars"
-                app:srcCompat="@drawable/img" />
 
             <TextView
                 android:id="@+id/toolbarTitle"
@@ -53,6 +45,7 @@
                 android:layout_weight="1"
                 android:paddingLeft="0dp"
                 android:text="@string/app_name"
+                android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="25sp"
                 android:textStyle="bold" />

@@ -79,14 +79,6 @@
                 android:src="@drawable/baseline_arrow_back_24" />
 
             <!-- Título centrado -->
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="9dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="centerInside"
-                android:src="@tools:sample/avatars"
-                app:srcCompat="@drawable/img" />
 
             <TextView
                 android:id="@+id/toolbarTitle"
