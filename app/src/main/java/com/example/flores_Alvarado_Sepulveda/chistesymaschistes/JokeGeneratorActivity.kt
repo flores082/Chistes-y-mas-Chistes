@@ -52,8 +52,8 @@ class JokeGeneratorActivity : AppCompatActivity(), ApiCallback {
         refreshButton.setOnClickListener {
             mediaPlayer.start()
             // Trigger API request when the button is clicked
-            lista_agregada("nombre")
-            //requestRandomJoke()
+            // lista_agregada("nombre")
+            requestRandomJoke()
         }
 
 
@@ -69,6 +69,7 @@ class JokeGeneratorActivity : AppCompatActivity(), ApiCallback {
     private fun requestRandomJoke() {
         // Get the list of API keys
         val apiKeys = ApiKeyManager.getApiKeys()
+        var skip = false
 
         // Iterate through the keys and try each one until success or no more keys
         for (apiKey in apiKeys) {
@@ -87,9 +88,13 @@ class JokeGeneratorActivity : AppCompatActivity(), ApiCallback {
             }
 
             // Break the loop if the request was successful
+            skip = true
             break
         }
-        lista_agregada("nombre")
+
+        if (!skip) {
+            lista_agregada("nombre")
+        }
     }
 
     override fun onApiResult(result: String) {
@@ -133,3 +138,11 @@ class JokeGeneratorActivity : AppCompatActivity(), ApiCallback {
         return true
     }
 }
+
+/*
+
+Raw API response: {"id":29817,"joke":"My first job was working in an orange juice factory, but I got canned: couldn't concentrate."}
+2023-12-16 21:44:25.012 31039-31039 ApiRequestTask
+
+
+ */
